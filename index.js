@@ -26,10 +26,21 @@ client.connect(err => {
                
       })
   })
+
+
   app.get('/lodeUser', (req, res) => {
     collection.find({})
     .toArray((err, documents) => {
       res.send(documents); 
+    })
+  })
+
+
+  app.delete('/delete/:id', (req, res) =>{
+    collection.deleteOne({_id: ObjectId(req.params.id)})
+    .then( result => {
+        console.log(result)
+      res.send(result.deletedCount > 0);
     })
   })
 });
