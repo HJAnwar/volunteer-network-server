@@ -19,7 +19,7 @@ client.connect(err => {
 
   app.post("/registered", (req, res) => {
     const Event = req.body;
-    console.log(Event)
+    
     collection.insertOne(Event)
       .then(result => {
         res.send(result.insertedCount);
